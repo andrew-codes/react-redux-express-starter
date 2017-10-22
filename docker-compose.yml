@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+  web:
+    build: .
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "3014:3014"
+      - "3011:3011"
+      - "3012:3012"
+    environment:
+      - NODE_ENV=dev
+      - HOST=0.0.0.0
+      - PORT=3014
+      - DEV_HOST=0.0.0.0
+      - DEV_PORT=3011
+      - API_HOST=0.0.0.0
+      - API_PORT=3012
+      - MONGO_URI=mongodb://mongo:27017
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes_from:
+      - mongo_data
+  mongo_data:
+    image: tianon/true
+    volumes:
+      - /data/db

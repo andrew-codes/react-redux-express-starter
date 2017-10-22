@@ -1,5 +1,6 @@
 const DEFAULT_HOST = 'localhost';
-const DEFAULT_MONGO_URI = 'mongodb://localhost/starter-app';
+const DEFAULT_DEV_HOST = '0.0.0.0';
+const DEFAULT_MONGO_URI = 'mongodb://mongo:27017';
 const DEFAULT_PORT = 3004;
 const DEFAULT_DEV_PORT = 3001;
 const DEFAULT_API_PORT = 3002;
@@ -20,7 +21,7 @@ export const nodeEnv = NODE_ENV || DEFAULT_NODE_ENV;
 export const versionNumber = VERSION_NUMBER;
 export const host = HOST || DEFAULT_HOST;
 export const port = PORT || DEFAULT_PORT;
-export const devHost = DEV_HOST || DEFAULT_HOST;
+export const devHost = DEV_HOST || DEFAULT_DEV_HOST;
 export const devPort = DEV_PORT || DEFAULT_DEV_PORT;
 export const apiHost = API_HOST || DEFAULT_HOST;
 export const apiPort = API_PORT || DEFAULT_API_PORT;
