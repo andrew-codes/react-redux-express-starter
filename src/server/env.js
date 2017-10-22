@@ -12,7 +12,7 @@ const {
     HOST, PORT,
     DEV_HOST, DEV_PORT,
     API_HOST, API_PORT,
-    MONDO_URI,
+    MONGO_URI,
     MAILGUN_API_KEY, MAILGUN_DOMAIN
 } = process.env;
 
@@ -25,6 +25,6 @@ export const devHost = DEV_HOST || DEFAULT_DEV_HOST;
 export const devPort = DEV_PORT || DEFAULT_DEV_PORT;
 export const apiHost = API_HOST || DEFAULT_HOST;
 export const apiPort = API_PORT || DEFAULT_API_PORT;
-export const mongoUri = MONDO_URI || DEFAULT_MONGO_URI;
+export const mongoUri = MONGO_URI || DEFAULT_MONGO_URI;
 export const mailgunApiKey = MAILGUN_API_KEY || 'XX';
 export const mailgunDomain = MAILGUN_DOMAIN || 'XX';
