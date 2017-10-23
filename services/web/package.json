@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "@quillio/StarterWeb",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build/production": "NODE_ENV=production webpack"
+  },
+  "keywords": [],
+  "author": "public@quillio.io",
+  "contributors": [
+    "walkerrandolphsmith@gmail.com",
+    "Andrew Smith <andrew@andrew.codes>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "file-loader": "^1.1.5",
+    "happypack": "^4.0.0",
+    "static-site-generator-webpack-plugin": "^3.4.1",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}

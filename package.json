@@ -20,14 +20,13 @@
   ],
   "author": "public@quillio.io",
   "contributors": [
-    "walkerrandolphsmith@gmail.com"
+    "walkerrandolphsmith@gmail.com",
+    "Andrew Smith <andrew@andrew.codes>"
   ],
   "bugs": {
     "url": "http://github.com/quillio/react-redux-express-starter.github.com/issues"
   },
   "scripts": {
-    "start": "nodemon src/server/index.js",
-    "build:prod": "webpack --config webpack/webpack.prod.config.js --output-path",
     "lint": "eslint -c .eslintrc --cache .",
     "test": "ava",
     "co": "cypress open"
@@ -95,19 +94,6 @@
     "wallaby-webpack": "0.0.34",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.3.0"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-0",
-      "stage-1",
-      "stage-2",
-      "stage-3"
-    ],
-    "plugins": [
-      "transform-decorators-legacy"
-    ]
   },
   "ava": {
     "files": [
