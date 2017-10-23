@@ -2,13 +2,16 @@ const HappyPack = require('happypack');
 const path = require('path');
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 const webpack = require('webpack');
+const routes = require('./src/routes');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const rootPath = path.resolve(__dirname);
+const entryPath = path.join(rootPath, 'src', 'index.js');
 const outputPath = path.join(rootPath, 'dist');
+const assetsPath = path.join(rootPath, 'assets');
 
 module.exports = {
-    entry: path.join(rootPath, 'src', 'index.js'),
+    entry: entryPath,
     module: {
         rules: [
             {
@@ -39,12 +42,8 @@ module.exports = {
             ],
         }),
         new StaticSiteGeneratorPlugin({
-            paths: [
-                '/hello/',
-                '/world/',
-            ],
+            paths: routes.default.map(route => route.path),
             locals: {
-                baseHref: 'http://localhost/',
                 title: 'Starter App',
             },
         }),
@@ -59,5 +58,10 @@ module.exports = {
                 }),
             ]
             : []),
+    resolve: {
+        alias: {
+            'assets': assetsPath,
+        }
+    },
     target: 'web'
 };

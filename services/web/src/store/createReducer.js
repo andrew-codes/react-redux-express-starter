@@ -1,0 +1,1 @@
+export default (reducers, defaultState={}) => (state=defaultState, action) => reducers[action.type] ? reducers[action.type](state, action): state;
