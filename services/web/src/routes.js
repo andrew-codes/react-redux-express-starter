@@ -1,5 +1,7 @@
-import Home from './components/Home';
 import About from './components/About';
+import Home from './components/Home';
+import Topic from './components/Topic';
+import Topics from './components/Topics';
 
 export default [
     {
@@ -7,7 +9,7 @@ export default [
         path: '/',
         component: Home,
         loadData: () => Promise.resolve({
-            data: true,
+            home: true,
         }),
     },
     {
@@ -15,8 +17,23 @@ export default [
         component: About,
         loadData: () => Promise.resolve({
             test: {
-                test: true,
+                about: true,
             },
         }),
+    },
+    {
+        path: '/topics',
+        component: Topics,
+        loadData: () => Promise.resolve({
+            test: {
+                topic: true,
+            },
+        }),
+        routes: [
+            {
+                path: '/topics/:topicId',
+                component: Topic,
+            }
+        ]
     },
 ]

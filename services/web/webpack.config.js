@@ -3,6 +3,7 @@ const path = require('path');
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 const webpack = require('webpack');
 const routes = require('./src/routes');
+const routesToArray = require('./routesToArray');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const rootPath = path.resolve(__dirname);
@@ -42,10 +43,11 @@ module.exports = {
             ],
         }),
         new StaticSiteGeneratorPlugin({
-            paths: routes.default.map(route => route.path),
+            crawl: true,
             locals: {
                 title: 'Starter App',
             },
+            paths: routesToArray.default(routes.default),
         }),
     ]
         .concat(isProduction

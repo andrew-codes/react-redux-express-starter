@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {render} from 'react-dom';
+import {renderRoutes} from 'react-router-config';
 import {renderToString} from 'react-dom/server';
 import App from './App';
 import routes from './routes';
@@ -19,8 +20,9 @@ export default (data) => {
     const css = assets.filter(value => value.match(/\.css$/));
     const js = assets.filter(value => value.match(/\.js$/));
 
-    const context = {
-        url: data.path,
+    const props = {
+        context: {},
+        location: data.path,
     };
 
     const promises = [];
@@ -49,7 +51,7 @@ export default (data) => {
     ${js.map(asset => `<script src="/dist/${asset}" async></script>`).join()}
 </head>
 <body>
-<div id="app">${renderToString(createApp(initialStates, StaticRouter, context))}</div>
+<div id="app">${renderToString(createApp(initialStates, StaticRouter, props))}</div>
 </body>
 </html>
 `);
@@ -58,17 +60,19 @@ export default (data) => {
 if (typeof global.document !== 'undefined') {
     const initialState = window.__INITIAL_STATE__;
     const context = {};
-    const App = createApp(initialState, BrowserRouter, context);
+    const Root = createApp(initialState, BrowserRouter, context);
     const rootEl = global.document.getElementById('app');
-    render(App, rootEl,);
+    render(Root, rootEl,);
 }
 
-function createApp(initialState, Router, context) {
+function createApp(initialState, Router, props = {}) {
     const store = configureStore(initialState);
     return (
         <Provider store={store}>
-            <Router context={context}>
-                <App/>
+            <Router {...props}>
+                <App>
+                    {renderRoutes(routes)}
+                </App>
             </Router>
         </Provider>
     );

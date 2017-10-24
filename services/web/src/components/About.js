@@ -1,5 +1,7 @@
 import React from 'react';
 
 export default () => (
-   <span>About</span>
+    <div>
+        <span>About</span>
+    </div>
 )

@@ -1,14 +1,21 @@
 import React from 'react';
-import {Route, Switch} from 'react-router';
-import routes from './routes'
+import {Link} from 'react-router-dom';
+import {Route} from 'react-router';
 
-export default () => (
-    <Switch>
-        {routes.map((route, index) => (
-            <Route
-                {...route}
-                key={index}
-            />
-        ))}
-    </Switch>
+export default ({
+                    children,
+                    location
+                }) => (
+    <div>
+        <div>
+            <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/topics">Topics</Link></li>
+            </ul>
+        </div>
+        <Route
+            location={location}
+            render={() => children}/>
+    </div>
 )
